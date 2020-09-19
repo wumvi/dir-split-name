@@ -1,0 +1,15 @@
+{
+    "name": "wumvi/dir-split-name",
+    "autoload": {
+        "psr-4": {
+            "Wumvi\\Utils\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vitaliy Kozlenko",
+            "email": "vk@wumvi.com"
+        }
+    ],
+    "require": {}
+}
