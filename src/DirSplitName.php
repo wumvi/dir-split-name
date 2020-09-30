@@ -17,4 +17,11 @@ class DirSplitName
 
         return $result;
     }
+
+    public static function hashToChunk(string $hash, $prefixCount = 4): string
+    {
+        $prefix = implode('/', str_split(substr($hash, 0, $prefixCount * 2), 2)) . '/';
+
+        return $prefix . substr($hash, $prefixCount * 2) . '/';
+    }
 }
