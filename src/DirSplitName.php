@@ -5,7 +5,7 @@ namespace Wumvi\Utils;
 
 class DirSplitName
 {
-    public static function get(string $str, int $chunkSize = 2): string
+    public static function split(string $str, int $chunkSize = 2): string
     {
         $strLen = strlen($str);
         $align = $strLen % $chunkSize;
