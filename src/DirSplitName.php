@@ -1,27 +1,16 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Wumvi\Utils;
 
 class DirSplitName
 {
-    public static function get(array $parts): string
+    public static function get(string $str, int $chunkSize = 2): string
     {
-        $result = '';
-        foreach ($parts as $part) {
-            $len = strlen($part . '');
-            $len = $len + $len % 2;
-            $result .= chunk_split(str_pad($part . '', $len, '0', STR_PAD_LEFT), 2, '/');
-        }
-
-        return $result;
-    }
-
-    public static function hashToChunk(string $hash, $prefixCount = 4): string
-    {
-        $prefix = implode('/', str_split(substr($hash, 0, $prefixCount * 2), 2)) . '/';
-
-        return $prefix . substr($hash, $prefixCount * 2) . '/';
+        $strLen = strlen($str);
+        $align = $strLen % $chunkSize;
+        $strLenAlign = $strLen + ($align !== 0 ? $chunkSize - $align : 0);
+        $strAlign = str_pad($str, $strLenAlign, '0', STR_PAD_LEFT);
+        return chunk_split($strAlign, $chunkSize, '/');
     }
 }
